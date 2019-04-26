@@ -2,7 +2,11 @@
   <div id="app">
     <v-app>
       <Navigation />
-      <router-view />
+      <v-content>
+        <v-container fluid>
+          <router-view />
+        </v-container>
+      </v-content>
     </v-app>
   </div>
 </template>

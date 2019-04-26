@@ -26,7 +26,41 @@
       />
     </div>
   </header> -->
-  <v-navigation-drawer> </v-navigation-drawer>
+  <v-navigation-drawer app permanent>
+    <v-toolbar flat>
+      <v-list>
+        <v-list-tile>
+          <v-list-tile-title class="title">
+            <router-link to="/">Home</router-link>
+          </v-list-tile-title>
+        </v-list-tile>
+      </v-list>
+    </v-toolbar>
+    <v-divider></v-divider>
+    <v-list dense class="pt=0">
+      <v-list-tile>
+        <v-list-tile-content>
+          <v-list-tile-title>
+            <router-link to="/about">About</router-link>
+          </v-list-tile-title>
+        </v-list-tile-content>
+      </v-list-tile>
+      <v-list-tile>
+        <v-list-tile-content>
+          <v-list-tile-title>
+            <router-link to="/login">Login</router-link>
+          </v-list-tile-title>
+        </v-list-tile-content>
+      </v-list-tile>
+      <v-list-tile>
+        <v-list-tile-content>
+          <v-list-tile-title>
+            <router-link to="/protected">Protected</router-link>
+          </v-list-tile-title>
+        </v-list-tile-content>
+      </v-list-tile>
+    </v-list>
+  </v-navigation-drawer>
 </template>
 
 <script>
