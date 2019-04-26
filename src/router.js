@@ -4,8 +4,6 @@ import { isNil } from 'lodash';
 import store from '@/store';
 import Home from './views/Home.vue';
 import CheckAuth from './views/CheckAuth.vue';
-import Login from './views/Login.vue';
-import Protected from './views/Protected.vue';
 import About from './views/About.vue';
 
 Vue.use(Router);
@@ -36,9 +34,6 @@ const router = new Router({
       meta: {
         authRequired: true
       },
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
       component: About
     },
     {
@@ -47,15 +42,19 @@ const router = new Router({
       meta: {
         authRequired: true
       },
-      component: Protected
+      // route level code-splitting
+      // this generates a separate chunk (about.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () =>
+        import(/* webpackChunkName: "client-chunk-products" */ '@/views/Protected.vue')
     },
     {
       path: '/login',
       name: 'login',
-      component: Login,
       meta: {
         authRequired: false
-      }
+      },
+      component: () => import(/* webpackChunkName: "client-chunk-products" */ '@/views/Login.vue')
     }
   ]
 });
