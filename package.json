@@ -33,6 +33,7 @@
     "vue": "^2.6.10",
     "vue-head": "^2.1.1",
     "vue-router": "^3.0.3",
+    "vuetify": "^1.5.13",
     "vuex": "^3.0.1",
     "webpack-merge": "^4.2.1"
   },

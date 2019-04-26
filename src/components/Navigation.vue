@@ -1,5 +1,5 @@
 <template>
-  <header class="navbar" :class="{ offline: !networkOnLine }">
+  <!-- <header class="navbar" :class="{ offline: !networkOnLine }">
     <router-link to="/">Home</router-link>
     <div class="links">
       <nav class="nav-links">
@@ -25,7 +25,8 @@
         alt="Avatar"
       />
     </div>
-  </header>
+  </header> -->
+  <v-navigation-drawer> </v-navigation-drawer>
 </template>
 
 <script>
