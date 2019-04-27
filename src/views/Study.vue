@@ -1,5 +1,5 @@
 <template>
-  <div class="study-container">
+  <div class="study-container container">
     <CharacterBlock></CharacterBlock>
   </div>
 </template>
@@ -18,5 +18,8 @@ export default {
 .study-container {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
 }
 </style>

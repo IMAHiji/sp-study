@@ -1,11 +1,20 @@
 <template>
   <div>
-    <h1>I am account</h1>
+    <h2>Account</h2>
+    <p>Name: {{ user.displayName }}</p>
+    <p>Email: {{ user.email }}</p>
+    <img :src="user.photoURL" alt="Profile Picture" />
   </div>
 </template>
 
 <script>
-export default {};
+import { mapState } from 'vuex';
+
+export default {
+  computed: {
+    ...mapState('auth', ['user'])
+  }
+};
 </script>
 
 <style lang="scss" scoped></style>

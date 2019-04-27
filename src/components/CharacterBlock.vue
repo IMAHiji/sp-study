@@ -1,10 +1,23 @@
 <template>
-  <div class="character-block">
-    <div class="character-display">
-      <h3 class="character">永</h3>
+  <div class="card character-block">
+    <div class="card-image character">
+      <span>永</span>
     </div>
-    <div class="character-information">
-      <p>things</p>
+    <div class="card-content is-centered">
+      <div class="media">
+        <div class="media-content ">
+          <p class="title is-4">yǒng</p>
+          <p class="subtitle is-6">forever</p>
+        </div>
+      </div>
+
+      <div class="content">
+        <p>Content stuff goes here, buttons, etc.</p>
+        <p>
+          Now is the time for all good men to come to the aid of their country and fight for their
+          right to be free men.
+        </p>
+      </div>
     </div>
   </div>
 </template>
@@ -17,12 +30,7 @@ export default {
 
 <style lang="postcss" scoped>
 .character-block {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  border: 2px solid green;
-  width: auto;
+  max-width: 500px;
 }
 .character {
   font-size: 10rem;

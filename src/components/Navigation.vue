@@ -1,39 +1,6 @@
 <template>
-  <!-- <header class="navbar w-screen" :class="{ offline: !networkOnLine }">
-    <router-link to="/">Home</router-link>
-    <div class="links">
-      <nav class="nav-links">
-        <div class="nav-item">
-          <router-link to="/protected">Protected</router-link>
-        </div>
-        <div class="nav-item">
-          <router-link to="/study">Study</router-link>
-        </div>
-        <div class="nav-item">
-          <router-link to="/about">About</router-link>
-        </div>
-        <div v-if="!isUserLoggedIn && networkOnLine" class="nav-item">
-          <router-link to="/login">Login</router-link>
-        </div>
-        <div v-if="isUserLoggedIn && networkOnLine" class="nav-item logout-item" @click="logout">
-          <a>Logout</a>
-        </div>
-        <div v-if="!networkOnLine" class="nav-item offline-label">Offline</div>
-      </nav>
-      <router-link to="/account">
-        <img
-          v-if="isUserLoggedIn && networkOnLine"
-          class="user-picture can-hide"
-          :src="user.photoURL"
-          alt="Avatar"
-        />
-      </router-link>
-    </div>
-  </header> -->
-
-  <navbar class="navbar " :class="{ offline: !networkOnLine }" role="navigation">
+  <nav class="navbar " :class="{ offline: !networkOnLine }" role="navigation">
     <div class="navbar-brand">
-      <router-link to="/">Home</router-link>
       <a
         role="button"
         class="navbar-burger burger"
@@ -60,6 +27,12 @@
     <div class="navbar-menu" :class="{ 'is-active': showNav }">
       <div class="navbar-start">
         <div class="navbar-item">
+          <router-link to="/">Home</router-link>
+        </div>
+        <div v-if="!networkOnLine" class="nav-item offline-label">Offline</div>
+      </div>
+      <div class="navbar-end">
+        <div class="navbar-item">
           <router-link to="/protected">Protected</router-link>
         </div>
         <div class="navbar-item">
@@ -74,9 +47,6 @@
         <div v-if="isUserLoggedIn && networkOnLine" class="navbar-item logout-item" @click="logout">
           <a>Logout</a>
         </div>
-        <div v-if="!networkOnLine" class="nav-item offline-label">Offline</div>
-      </div>
-      <div class="navbar-end">
         <div class="navbar-item">
           <router-link to="/account">
             <img
@@ -89,7 +59,7 @@
         </div>
       </div>
     </div>
-  </navbar>
+  </nav>
 </template>
 
 <script>
@@ -114,4 +84,14 @@ export default {
   }
 };
 </script>
-<style lang="scss"></style>
+<style lang="scss">
+@import '@/assets/styles/main.scss';
+
+a {
+  font-weight: bold;
+  color: $link;
+  &.router-link-exact-active {
+    border-bottom: 2px solid $secondary;
+  }
+}
+</style>

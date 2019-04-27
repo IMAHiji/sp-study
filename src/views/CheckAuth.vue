@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p>Loading...</p>
+    <b-loading :is-full-page="true" :active="isLoading" :can-cancel="false"></b-loading>
   </div>
 </template>
 
@@ -9,6 +9,11 @@ import { mapState } from 'vuex';
 import { isNil } from 'lodash';
 
 export default {
+  data() {
+    return {
+      isLoading: true
+    };
+  },
   computed: mapState('auth', ['user']),
   watch: {
     user: {
@@ -18,7 +23,6 @@ export default {
         if (this.$route.query.redirectUrl === this.$route.path) {
           this.$router.push('/');
         }
-
         const redirectUrl = isNil(user)
           ? `/login?redirectUrl=${this.$route.query.redirectUrl}`
           : this.$route.query.redirectUrl;

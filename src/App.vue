@@ -1,7 +1,7 @@
 <template>
   <div id="app" class="app-container">
     <Navigation />
-    <div class="content-container">
+    <div class="section">
       <router-view />
     </div>
   </div>
@@ -27,14 +27,8 @@ export default {
   text-align: center;
   color: #2c3e50;
 }
-#nav {
-  padding: 30px;
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+
+.content-container {
+  height: 100vh;
 }
 </style>
