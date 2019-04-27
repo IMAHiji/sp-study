@@ -6,8 +6,7 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "test:unit": "vue-cli-service test:unit",
-    "storybook": "start-storybook"
+    "test:unit": "vue-cli-service test:unit"
   },
   "eslintConfig": {
     "root": true,
@@ -24,16 +23,18 @@
     }
   },
   "dependencies": {
+    "autoprefixer": "^9.5.1",
+    "buefy": "^0.7.5",
     "core-js": "^2.6.5",
     "firebase": "^5.10.0",
     "is_js": "^0.9.0",
     "lodash": "^4.17.11",
+    "postcss-import": "^12.0.1",
     "pwacompat": "^2.0.8",
     "register-service-worker": "^1.6.2",
     "vue": "^2.6.10",
     "vue-head": "^2.1.1",
     "vue-router": "^3.0.3",
-    "vuetify": "^1.5.13",
     "vuex": "^3.0.1",
     "webpack-merge": "^4.2.1"
   },
@@ -60,6 +61,7 @@
     "eslint-plugin-import": "^2.17.2",
     "eslint-plugin-vue": "^5.2.2",
     "firebase-tools": "^6.7.1",
+    "postcss-loader": "^3.0.0",
     "sass": "^1.18.0",
     "sass-loader": "^7.1.0",
     "vue-loader": "^15.7.0",

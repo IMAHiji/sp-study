@@ -1,10 +1,13 @@
 <template>
-  <!-- <header class="navbar" :class="{ offline: !networkOnLine }">
+  <!-- <header class="navbar w-screen" :class="{ offline: !networkOnLine }">
     <router-link to="/">Home</router-link>
     <div class="links">
       <nav class="nav-links">
         <div class="nav-item">
           <router-link to="/protected">Protected</router-link>
+        </div>
+        <div class="nav-item">
+          <router-link to="/study">Study</router-link>
         </div>
         <div class="nav-item">
           <router-link to="/about">About</router-link>
@@ -17,50 +20,76 @@
         </div>
         <div v-if="!networkOnLine" class="nav-item offline-label">Offline</div>
       </nav>
-
-      <img
-        v-if="isUserLoggedIn && networkOnLine"
-        class="user-picture can-hide"
-        :src="user.photoURL"
-        alt="Avatar"
-      />
+      <router-link to="/account">
+        <img
+          v-if="isUserLoggedIn && networkOnLine"
+          class="user-picture can-hide"
+          :src="user.photoURL"
+          alt="Avatar"
+        />
+      </router-link>
     </div>
   </header> -->
-  <v-navigation-drawer app permanent>
-    <v-toolbar flat>
-      <v-list>
-        <v-list-tile>
-          <v-list-tile-title class="title">
-            <router-link to="/">Home</router-link>
-          </v-list-tile-title>
-        </v-list-tile>
-      </v-list>
-    </v-toolbar>
-    <v-divider></v-divider>
-    <v-list dense class="pt=0">
-      <v-list-tile>
-        <v-list-tile-content>
-          <v-list-tile-title>
-            <router-link to="/about">About</router-link>
-          </v-list-tile-title>
-        </v-list-tile-content>
-      </v-list-tile>
-      <v-list-tile>
-        <v-list-tile-content>
-          <v-list-tile-title>
-            <router-link to="/login">Login</router-link>
-          </v-list-tile-title>
-        </v-list-tile-content>
-      </v-list-tile>
-      <v-list-tile>
-        <v-list-tile-content>
-          <v-list-tile-title>
-            <router-link to="/protected">Protected</router-link>
-          </v-list-tile-title>
-        </v-list-tile-content>
-      </v-list-tile>
-    </v-list>
-  </v-navigation-drawer>
+
+  <navbar class="navbar " :class="{ offline: !networkOnLine }" role="navigation">
+    <div class="navbar-brand">
+      <router-link to="/">Home</router-link>
+      <a
+        role="button"
+        class="navbar-burger burger"
+        aria-label="menu"
+        aria-expanded="false"
+        data-target="navbarBasicExample"
+      >
+        <a
+          class="navbar-burger burger"
+          :class="{ 'is-active': showNav }"
+          role="button"
+          data-target="navbar-menu"
+          aria-label="menu"
+          aria-expanded="false"
+          @click="showNav = !showNav"
+        >
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </a>
+    </div>
+
+    <div class="navbar-menu" :class="{ 'is-active': showNav }">
+      <div class="navbar-start">
+        <div class="navbar-item">
+          <router-link to="/protected">Protected</router-link>
+        </div>
+        <div class="navbar-item">
+          <router-link to="/study">Study</router-link>
+        </div>
+        <div class="navbar-item">
+          <router-link to="/about">About</router-link>
+        </div>
+        <div v-if="!isUserLoggedIn && networkOnLine" class="navbar-item">
+          <router-link to="/login">Login</router-link>
+        </div>
+        <div v-if="isUserLoggedIn && networkOnLine" class="navbar-item logout-item" @click="logout">
+          <a>Logout</a>
+        </div>
+        <div v-if="!networkOnLine" class="nav-item offline-label">Offline</div>
+      </div>
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <router-link to="/account">
+            <img
+              v-if="isUserLoggedIn && networkOnLine"
+              class="user-picture can-hide"
+              :src="user.photoURL"
+              alt="Avatar"
+            />
+          </router-link>
+        </div>
+      </div>
+    </div>
+  </navbar>
 </template>
 
 <script>
@@ -68,6 +97,11 @@ import firebase from 'firebase/app';
 import { mapGetters, mapState } from 'vuex';
 
 export default {
+  data() {
+    return {
+      showNav: false
+    };
+  },
   computed: {
     ...mapGetters('auth', ['isUserLoggedIn']),
     ...mapState('auth', ['user']),
@@ -80,111 +114,4 @@ export default {
   }
 };
 </script>
-<style lang="scss">
-@import '@/theme/variables.scss';
-
-.navbar {
-  top: 0;
-  left: 0;
-  z-index: 20;
-  right: 0;
-  height: 3.6rem;
-  background-color: #fff;
-  box-sizing: border-box;
-  border-bottom: 1px solid #eaecef;
-  padding: 0.7rem 1.5rem;
-  line-height: 2.2rem;
-
-  a {
-    display: flex;
-    align-items: center;
-  }
-
-  @media (max-width: 500px) {
-    padding: 0.7rem 0.7rem;
-
-    .can-hide {
-      display: none;
-    }
-  }
-
-  .site-name {
-    font-size: 1.3rem;
-    font-weight: 600;
-    color: #2c3e50;
-    position: relative;
-  }
-
-  .logo {
-    height: 24px;
-    padding-right: 8px;
-  }
-
-  .links {
-    padding-left: 1.5rem;
-    box-sizing: border-box;
-    white-space: nowrap;
-    font-size: 0.9rem;
-    position: absolute;
-    right: 1.5rem;
-    top: 0.7rem;
-    display: flex;
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      .nav-item {
-        position: relative;
-        display: inline-block;
-        margin-left: 1.5rem;
-        line-height: 2.2rem;
-
-        &:first-child {
-          margin-left: 0;
-        }
-
-        a {
-          font-weight: 500;
-          font-size: 0.9rem;
-          text-decoration: none;
-          color: $navbar-link-color;
-          border-color: #2c3e50;
-          line-height: 1.4rem;
-          display: inline-block;
-          cursor: pointer;
-        }
-
-        .router-link-exact-active,
-        :hover {
-          margin-bottom: -2px;
-          border-bottom: 2px solid $vue-color;
-        }
-      }
-    }
-  }
-
-  &.offline {
-    background: $navbar-offline-color;
-    .links .nav-links .nav-item a,
-    .site-name {
-      color: white;
-    }
-  }
-
-  .user-picture {
-    max-height: 32px;
-    margin-left: 1.5rem;
-    border-radius: 50%;
-  }
-
-  .offline-label {
-    padding: 0px 10px;
-    border: 1px solid white;
-    border-radius: 5px;
-    color: white;
-    margin-left: 1.5rem;
-  }
-}
-</style>
+<style lang="scss"></style>

@@ -32,7 +32,7 @@ const router = new Router({
       path: '/about',
       name: 'about',
       meta: {
-        authRequired: true
+        authRequired: false
       },
       component: About
     },
@@ -46,7 +46,7 @@ const router = new Router({
       // this generates a separate chunk (about.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: () =>
-        import(/* webpackChunkName: "client-chunk-products" */ '@/views/Protected.vue')
+        import(/* webpackChunkName: "client-chunk-protected" */ '@/views/Protected.vue')
     },
     {
       path: '/login',
@@ -54,7 +54,23 @@ const router = new Router({
       meta: {
         authRequired: false
       },
-      component: () => import(/* webpackChunkName: "client-chunk-products" */ '@/views/Login.vue')
+      component: () => import(/* webpackChunkName: "client-chunk-login" */ '@/views/Login.vue')
+    },
+    {
+      path: '/account',
+      name: 'account',
+      meta: {
+        authRequired: true
+      },
+      component: () => import(/* webpackChunkName: "client-chunk-account" */ '@/views/Account.vue')
+    },
+    {
+      path: '/study',
+      name: 'study',
+      meta: {
+        authRequired: true
+      },
+      component: () => import(/* webpackChunkName: "client-chunk-study"*/ '@/views/Study.vue')
     }
   ]
 });
