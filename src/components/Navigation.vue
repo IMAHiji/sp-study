@@ -1,64 +1,35 @@
 <template>
-  <nav class="navbar " :class="{ offline: !networkOnLine }" role="navigation">
-    <div class="navbar-brand">
-      <a
-        role="button"
-        class="navbar-burger burger"
-        aria-label="menu"
-        aria-expanded="false"
-        data-target="navbarBasicExample"
-      >
-        <a
-          class="navbar-burger burger"
-          :class="{ 'is-active': showNav }"
-          role="button"
-          data-target="navbar-menu"
-          aria-label="menu"
-          aria-expanded="false"
-          @click="showNav = !showNav"
-        >
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-        </a>
-      </a>
-    </div>
-
-    <div class="navbar-menu" :class="{ 'is-active': showNav }">
-      <div class="navbar-start">
-        <div class="navbar-item">
-          <router-link to="/">Home</router-link>
-        </div>
-        <div v-if="!networkOnLine" class="nav-item offline-label">Offline</div>
-      </div>
-      <div class="navbar-end">
-        <div class="navbar-item">
-          <router-link to="/protected">Protected</router-link>
-        </div>
-        <div class="navbar-item">
-          <router-link to="/study">Study</router-link>
-        </div>
-        <div class="navbar-item">
-          <router-link to="/about">About</router-link>
-        </div>
-        <div v-if="!isUserLoggedIn && networkOnLine" class="navbar-item">
-          <router-link to="/login">Login</router-link>
-        </div>
-        <div v-if="isUserLoggedIn && networkOnLine" class="navbar-item logout-item" @click="logout">
-          <a>Logout</a>
-        </div>
-        <div class="navbar-item">
-          <router-link to="/account">
-            <img
-              v-if="isUserLoggedIn && networkOnLine"
-              class="user-picture can-hide"
-              :src="user.photoURL"
-              alt="Avatar"
-            />
-          </router-link>
-        </div>
-      </div>
-    </div>
+  <nav class="container  nav-container mx-auto border border-black">
+    <ul class="list-reset flex min-h-full">
+      <li class="nav-list-item">
+        <router-link class="nav-link" to="/">Home</router-link>
+      </li>
+      <li class="nav-list-item">
+        <router-link class="nav-link" to="/protected">Protected</router-link>
+      </li>
+      <li class="nav-list-item">
+        <router-link class="nav-link" to="/study">Study</router-link>
+      </li>
+      <li class="nav-list-item">
+        <router-link class="nav-link" to="/about">About</router-link>
+      </li>
+      <li v-if="!isUserLoggedIn && networkOnLine" class="nav-list-item">
+        <router-link class="nav-link" to="/login">Login</router-link>
+      </li>
+      <li v-if="isUserLoggedIn && networkOnLine" class="nav-list-item" @click="logout">
+        <a class="nav-link">Logout</a>
+      </li>
+      <li class="nav-list-item">
+        <router-link to="/account" class="nav-list-item">
+          <img
+            v-if="isUserLoggedIn && networkOnLine"
+            class="w-10 h-10 rounded-full mr-4"
+            :src="user.photoURL"
+            alt="Avatar"
+          />
+        </router-link>
+      </li>
+    </ul>
   </nav>
 </template>
 
@@ -84,14 +55,27 @@ export default {
   }
 };
 </script>
-<style lang="scss">
-@import '@/assets/styles/main.scss';
-
-a {
+<style lang="postcss">
+/* a {
   font-weight: bold;
   color: $link;
   &.router-link-exact-active {
     border-bottom: 2px solid $secondary;
   }
+} */
+
+.nav-container {
+  min-height: 40px;
+}
+
+.nav-list-item {
+  @apply text-blue mr-3 flex-1 flex items-center justify-center;
+  min-height: 40px;
+}
+.nav-link {
+  @apply text-blue;
+}
+.nav-link:hover {
+  @apply text-blue-darker;
 }
 </style>

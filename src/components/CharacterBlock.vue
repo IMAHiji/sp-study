@@ -28,10 +28,12 @@ export default {
 };
 </script>
 
-<style lang="css" scoped>
+<style lang="postcss" scoped>
 .character-block {
   font-family: 'Noto Sans', Helvetica, Arial, sans-serif;
   max-width: 500px;
+  &: hover {
+  }
 }
 .character {
   font-size: 10rem;

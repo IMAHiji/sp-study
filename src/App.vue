@@ -1,6 +1,8 @@
 <template>
-  <div id="app" class="app-container">
-    <Navigation />
+  <div id="app" class="app-container w-screen">
+    <div class="section">
+      <Navigation />
+    </div>
     <div class="section">
       <router-view />
     </div>
@@ -16,10 +18,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
-@import url('https://fonts.googleapis.com/css?family=Noto+Sans');
-@import '@/assets/styles/main.scss';
-
+<style lang="postcss">
 #app {
   font-family: 'Noto Sans', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
