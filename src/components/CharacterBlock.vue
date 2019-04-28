@@ -28,8 +28,9 @@ export default {
 };
 </script>
 
-<style lang="postcss" scoped>
+<style lang="css" scoped>
 .character-block {
+  font-family: 'Noto Sans', Helvetica, Arial, sans-serif;
   max-width: 500px;
 }
 .character {
