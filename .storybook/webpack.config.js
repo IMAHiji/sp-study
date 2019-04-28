@@ -10,7 +10,7 @@ module.exports = async ({ config, mode }) => {
   // Make whatever fine-grained changes you need
   config.module.rules.push({
     test: /\.css$/,
-    loaders: ['style-loader', 'css-loader'],
+    loaders: ['style-loader', 'css-loader', 'postcss-loader'],
     include: path.resolve(__dirname, '../'),
   });
 

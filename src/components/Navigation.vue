@@ -1,5 +1,5 @@
 <template>
-  <nav class="container  nav-container mx-auto border border-black">
+  <nav class="container  nav-container mx-auto">
     <ul class="list-reset flex min-h-full">
       <li class="nav-list-item">
         <router-link class="nav-link" to="/">Home</router-link>
