@@ -12,9 +12,9 @@
 
     <p v-if="loginError">{{ loginError }}</p>
     <!-- Auth UI -->
-    <div data-test="login-btn" class="login-btn" @click="login">
+    <b-button type="is-info" @click="login">
       Login with google
-    </div>
+    </b-button>
   </div>
 </template>
 
