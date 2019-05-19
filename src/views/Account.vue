@@ -1,9 +1,13 @@
 <template>
   <div>
-    <h2>Account</h2>
-    <p>Name: {{ user.displayName }}</p>
-    <p>Email: {{ user.email }}</p>
-    <img :src="user.photoURL" alt="Profile Picture" />
+    <ul>
+      <li>
+        <router-link to="profile">Profile</router-link>
+      </li>
+      <li>
+        <router-link to="characters">Characters</router-link>
+      </li>
+    </ul>
     <router-view></router-view>
   </div>
 </template>

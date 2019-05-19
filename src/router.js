@@ -12,6 +12,7 @@ const router = new Router({
   mode: 'history',
   base: process.env.BASE_URL,
   linkExactActiveClass: 'is-active',
+  linkActiveClass: 'is-active',
   routes: [
     {
       path: '/' || '/home',
@@ -69,6 +70,11 @@ const router = new Router({
           path: 'characters',
           component: () =>
             import(/* webpackChunkName: "client-chunk-account-characters" */ '@/views/Account-Characters.vue')
+        },
+        {
+          path: 'profile',
+          component: () =>
+            import(/* webpackChunkName: "client-chunk-account-profile" */ '@/views/Account-Profile.vue')
         }
       ]
     },

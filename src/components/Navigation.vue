@@ -12,7 +12,7 @@
       </div>
       <div class="nabar-end">
         <div class="buttons">
-          <b-button tag="router-link" to="/account" class="navbar-item"
+          <b-button tag="router-link" to="/account/profile" class="navbar-item"
             ><img
               v-if="isUserLoggedIn && networkOnLine"
               class="w-10 h-10 rounded-full mr-4"
@@ -48,12 +48,12 @@ export default {
           text: 'Home'
         },
         {
-          link: '/study',
-          text: 'Study'
-        },
-        {
           link: '/about',
           text: 'About'
+        },
+        {
+          link: '/study',
+          text: 'Study'
         }
       ]
     };
