@@ -1,5 +1,5 @@
 <template>
-  <div class="study-container container">
+  <div class="study-container container mx-auto">
     <CharacterBlock></CharacterBlock>
   </div>
 </template>

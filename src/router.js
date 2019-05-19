@@ -11,6 +11,7 @@ Vue.use(Router);
 const router = new Router({
   mode: 'history',
   base: process.env.BASE_URL,
+  linkExactActiveClass: 'is-active',
   routes: [
     {
       path: '/' || '/home',
@@ -62,7 +63,14 @@ const router = new Router({
       meta: {
         authRequired: true
       },
-      component: () => import(/* webpackChunkName: "client-chunk-account" */ '@/views/Account.vue')
+      component: () => import(/* webpackChunkName: "client-chunk-account" */ '@/views/Account.vue'),
+      children: [
+        {
+          path: 'characters',
+          component: () =>
+            import(/* webpackChunkName: "client-chunk-account-characters" */ '@/views/Account-Characters.vue')
+        }
+      ]
     },
     {
       path: '/study',

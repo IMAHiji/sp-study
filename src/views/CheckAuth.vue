@@ -1,6 +1,6 @@
 <template>
   <div>
-    <b-loading :is-full-page="true" :active="isLoading" :can-cancel="false"></b-loading>
+    <h1>LOADING</h1>
   </div>
 </template>
 

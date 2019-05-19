@@ -1,35 +1,28 @@
 <template>
-  <nav class="container  nav-container mx-auto">
-    <ul class="list-reset flex min-h-full">
-      <li class="nav-list-item">
-        <router-link class="nav-link" to="/">Home</router-link>
-      </li>
-      <li class="nav-list-item">
-        <router-link class="nav-link" to="/protected">Protected</router-link>
-      </li>
-      <li class="nav-list-item">
-        <router-link class="nav-link" to="/study">Study</router-link>
-      </li>
-      <li class="nav-list-item">
-        <router-link class="nav-link" to="/about">About</router-link>
-      </li>
-      <li v-if="!isUserLoggedIn && networkOnLine" class="nav-list-item">
-        <router-link class="nav-link" to="/login">Login</router-link>
-      </li>
-      <li v-if="isUserLoggedIn && networkOnLine" class="nav-list-item" @click="logout">
-        <a class="nav-link">Logout</a>
-      </li>
-      <li class="nav-list-item">
-        <router-link to="/account" class="nav-list-item">
-          <img
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-menu">
+      <div class="navbar-start">
+        <router-link
+          v-for="(item, index) in routes"
+          :key="index"
+          :to="item.link"
+          class="navbar-item"
+          >{{ item.text }}</router-link
+        >
+      </div>
+      <div class="nabar-end">
+        <router-link to="/account"
+          ><img
             v-if="isUserLoggedIn && networkOnLine"
             class="w-10 h-10 rounded-full mr-4"
             :src="user.photoURL"
             alt="Avatar"
-          />
-        </router-link>
-      </li>
-    </ul>
+        /></router-link>
+        <a v-if="isUserLoggedIn && networkOnLine" @click="logout">
+          logout
+        </a>
+      </div>
+    </div>
   </nav>
 </template>
 
@@ -40,7 +33,21 @@ import { mapGetters, mapState } from 'vuex';
 export default {
   data() {
     return {
-      showNav: false
+      showNav: false,
+      routes: [
+        {
+          link: '/',
+          text: 'Home'
+        },
+        {
+          link: '/study',
+          text: 'Study'
+        },
+        {
+          link: '/about',
+          text: 'About'
+        }
+      ]
     };
   },
   computed: {
