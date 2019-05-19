@@ -1,11 +1,7 @@
 <template>
-  <div id="app" class="app-container w-screen">
-    <div class="section">
-      <Navigation />
-    </div>
-    <div class="section">
-      <router-view />
-    </div>
+  <div id="app" class="app-container ">
+    <Navigation />
+    <router-view />
   </div>
 </template>
 <script>

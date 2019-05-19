@@ -11,16 +11,24 @@
         >
       </div>
       <div class="nabar-end">
-        <router-link to="/account"
-          ><img
+        <div class="buttons">
+          <b-button tag="router-link" to="/account" class="navbar-item"
+            ><img
+              v-if="isUserLoggedIn && networkOnLine"
+              class="w-10 h-10 rounded-full mr-4"
+              :src="user.photoURL"
+              alt="Avatar"
+          /></b-button>
+          <b-button
             v-if="isUserLoggedIn && networkOnLine"
-            class="w-10 h-10 rounded-full mr-4"
-            :src="user.photoURL"
-            alt="Avatar"
-        /></router-link>
-        <a v-if="isUserLoggedIn && networkOnLine" @click="logout">
-          logout
-        </a>
+            tag="router-link"
+            to="#"
+            class="navbar-item"
+            @click="logout"
+          >
+            logout
+          </b-button>
+        </div>
       </div>
     </div>
   </nav>
@@ -62,27 +70,8 @@ export default {
   }
 };
 </script>
-<style lang="postcss">
-/* a {
-  font-weight: bold;
-  color: $link;
-  &.router-link-exact-active {
-    border-bottom: 2px solid $secondary;
-  }
-} */
-
-.nav-container {
-  min-height: 40px;
-}
-
-.nav-list-item {
-  @apply text-blue mr-3 flex-1 flex items-center justify-center;
-  min-height: 40px;
-}
-.nav-link {
-  @apply text-blue;
-}
-.nav-link:hover {
-  @apply text-blue-darker;
+<style lang="scss">
+.is-active {
+  border-bottom: 2px solid green;
 }
 </style>
